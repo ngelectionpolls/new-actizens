@@ -51,3 +51,5 @@ html[data-theme=dark] .design-canvas [class~="bg-[#ffaa00]"] p,html[data-theme=d
 @media(hover:hover) and (pointer:fine){.theme-toggle:hover{background:#dcebe1}html[data-theme=dark] .theme-toggle:hover{background:#36533e}}
 
 @media(max-width:1024px){.theme-toggle{width:44px;height:44px;min-width:44px;flex-basis:44px}}
+html[data-theme=dark] dialog code{background:#223b2b;color:#eaf3ed}html[data-theme=dark] .donation-checkout fieldset{border-color:#48664f}
+html[data-theme=dark] .donation-checkout small,html[data-theme=dark] .donation-checkout .optional-mark{color:#b9cec1}html[data-theme=dark] .donation-checkout .required-mark{color:#ff9c8f}

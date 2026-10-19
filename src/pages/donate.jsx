@@ -737,8 +737,8 @@ export default function AsifDonate() {
                     Pay with Card
                   </p>
                   <div className="font-['Inter:Regular'] font-normal leading-[0] relative shrink-0 text-[18px] text-[rgba(16,24,40,0.7)] whitespace-nowrap" data-node-id="319:7296">
-                    <p className="leading-[24px] mb-0 whitespace-pre">{`Visa, Mastercard and Verve cards will be accepted `}</p>
-                    <p className="leading-[24px] whitespace-pre">once our payment gateway is connected.</p>
+                    <p className="leading-[24px] mb-0 whitespace-pre">{`Pay with Visa, Mastercard or Verve through `}</p>
+                    <p className="leading-[24px] whitespace-pre">Paystack or Flutterwave secure checkout.</p>
                   </div>
                 </div>
               </div>

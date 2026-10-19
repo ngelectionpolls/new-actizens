@@ -41,6 +41,6 @@ Home, About, Programs, Events, Gallery, Contact, Donate, Resources, Downloads, P
 
 ## Service connections
 
-Contact, newsletter and document requests prepare email drafts. Donations do not process payments. Connect approved backend services before accepting submissions or collecting money. Resource guides and explainers are website starter content, not official organisational reports. Saved toolkits, reading lists and theme preferences are stored in the visitor's browser.
+Contact, newsletter and document requests prepare email drafts. Donations are processed through Paystack or Flutterwave hosted checkout (`lib/payments.mjs`, `pages/api/donations/`). Copy `.env.example` to `.env.local` and add the provider keys; set `SITE_URL` to the public site address in production. Swap the test keys for live keys before accepting real money. Resource guides and explainers are website starter content, not official organisational reports. Saved toolkits, reading lists and theme preferences are stored in the visitor's browser.
 
 Framework reference: https://nextjs.org/docs/pages
