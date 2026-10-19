@@ -1,0 +1,8 @@
+export const slug=s=>s.toLowerCase().normalize('NFKD').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+export function todayInNigeria(date=new Date()){return new Intl.DateTimeFormat('en-CA',{timeZone:'Africa/Lagos',year:'numeric',month:'2-digit',day:'2-digit'}).format(date);}
+export function eventIsPast(event,today=todayInNigeria()){return event[3]<today;}
+export function matchingEvents(events,{query='',period='upcoming',format='all',today=todayInNigeria()}={}){const q=query.trim().toLowerCase();return events.map((event,index)=>({event,index})).filter(({event})=>(period==='all'||(period==='past'?eventIsPast(event,today):!eventIsPast(event,today)))&&(format==='all'||event[5]===format)&&event.join(' ').toLowerCase().includes(q)).sort((a,b)=>period==='past'?b.event[3].localeCompare(a.event[3]):a.event[3].localeCompare(b.event[3]));}
+export function matchingPrograms(programs,guides,{query='',focus='All'}={}){const q=query.trim().toLowerCase();return programs.map((program,index)=>({program,guide:guides[index],index})).filter(({program,guide})=>(focus==='All'||guide.category===focus)&&[...program,guide.audience,guide.category,guide.outcome].join(' ').toLowerCase().includes(q));}
+export function validDonation(value){const n=Number(value);return Number.isFinite(n)&&n>=100;}
+// Count-up frame for a stat: the number eases out (1-(1-t)^3) and keeps its prefix, suffix and en-US separators.
+export function tallyText(finalText,t){const m=String(finalText).match(/^(\D*)(\d[\d,]*)(.*)$/s);if(!m)return String(finalText);const n=Number(m[2].replace(/,/g,'')),k=Math.min(1,Math.max(0,t));const v=Math.round(n*(1-(1-k)**3));return m[1]+(m[2].includes(',')?v.toLocaleString('en-US'):String(v))+m[3];}

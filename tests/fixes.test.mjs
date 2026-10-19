@@ -1,0 +1,7 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
+const read=p=>readFile(new URL('../'+p,import.meta.url),'utf8');
+test('events link reads View All Events',async()=>{const s=await read('src/pages/events.jsx');assert.match(s,/View All Events/);assert.doesNotMatch(s,/View All Programs/);});
+test('resources focus cards do not use fixed 236px descriptions',async()=>{assert.doesNotMatch(await read('src/pages/resources.jsx'),/w-\[236px\]/);});
+test('footer observer label navigates to contact',async()=>{const s=await read('public/app.js');assert.match(s,/'Apply as an Election Observer'/);assert.match(s,/'Apply for Election Observer'/);});
+test('events heading is not bound as a filter and only headings are renamed',async()=>{assert.match(await read('public/app.js'),/matching\(label\)\.filter\(p=>parseFloat\(getComputedStyle\(p\)\.fontSize\)<20\)/);assert.match(await read('public/experience.js'),/parseFloat\(getComputedStyle\(title\)\.fontSize\)>=20/);});
+test('mobile tap targets are at least 44px',async()=>{assert.match(await read('public/theme.css'),/@media\(max-width:1024px\)\{[^@]*\.theme-toggle\{[^}]*width:44px;height:44px/);assert.match(await read('public/experience.css'),/@media\(max-width:1024px\)\{\.text-button\{min-height:44px/);const l=await read('public/library.css');assert.match(l,/\.library-tabs a\{min-height:44px/);assert.match(l,/\.article-toc a\{display:flex;align-items:center;min-height:44px;padding:12px 0/);assert.match(l,/\.reading-path li a\{min-height:44px/);});
